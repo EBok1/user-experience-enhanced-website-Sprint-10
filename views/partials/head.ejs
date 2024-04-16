@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuurtConnect</title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" href="/style/style.css">
+
+    <!-- font style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+    <!-- link to js -->
+    <script src="/script/script.js" defer></script>
+
+    <!-- link to boxicons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="liNav">
+                <a href="/" <% if (current=='/' ) { %>
+                    class="active"
+                    <% } %>
+                        >Home
+                </a>
+            </li>
+            <li class="liNav">
+                <a href="/vraag-aanbod" <% if (current=='/vraag-aanbod' ) { %> class="active"<% } %>
+                        >Buurtprojecten</a>
+            </li>
+            <li class="liNav">
+                <a href="/project-insturen" <% if (current=='/detail' ) { %> class="active"<% } %>>Project insturen</a>
+            </li>
+            <li class="liNav">
+                <a href="/about" <% if (current=='/detail' ) { %> class="active"<% } %>>About us</a>
+            </li>
+            <li class="liNav">
+                <a href="/contact" <% if (current=='/detail' ) { %> class="active"<% } %>>Contact</a>
+            </li>
+            <li class="liNav">
+                <a href="/faq" <% if (current=='/detail' ) { %> class="active"<% } %>>FAQ</a>
+            </li>
+        </ul>
+    </nav>

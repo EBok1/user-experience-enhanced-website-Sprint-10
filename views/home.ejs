@@ -1,0 +1,61 @@
+<%- include('./partials/head' , {current: '/' }) %>
+
+    <main>
+        <section class="homePage">
+            <h1 class="homeH">BuurtConnect: Jouw Buurt, Jouw Projecten</h1>
+            <article class="hometext">Welkom bij BuurtConnect, het platform dat jouw buurt tot leven brengt met
+                geweldige projecten en
+                initiatieven! Of je nu een idee hebt om je buurt groener te maken, een evenement wilt organiseren om je
+                buren te verenigen, of gewoon op zoek bent naar manieren om actief deel te nemen aan je gemeenschap,
+                BuurtConnect is er om je te helpen.</article>
+            <button class="homeBtnScroll">Bekijk buurtprojecten</button>
+            <img class="homeImg" src="/Hallen-voorpagina.png" alt="home afbeelding">
+        </section>
+
+        <section class="container2">
+            <h2 class="homeh2">Aanbevolen projecten</h2>
+            <div class="cardContainer">
+                <% services.forEach(function(service) { %>
+                    <!-- Laat alleen de service zien als het type een vraag is -->
+                    <% if (service.type=='vraag' ) { %>
+
+                        <article class="card">
+                            <a class="linkVA" href="/vraag-aanbod/<%= service.id %>">
+                                <% if (service.image) { %>
+                                    <img class="imgVA" alt="afbeelding van project"
+                                        src="https://fdnd-agency.directus.app/assets/<%= service.image %>">
+                                    <% } %>
+
+                                        <div class="description">
+                                            <h3>
+                                                <%= service.title %>
+                                            </h3>
+                                            <p>
+                                                <span>
+                                                    <%= service.start_date %> - <%= service.end_date %>
+                                                </span>
+                                            </p>
+
+                                            <p><%- service.short_description %></p>
+                                        </div>
+                            </a>
+                            <button class="btn">Meer informatie</button>
+                        </article>
+
+                        <% } %>
+                            <% }) %>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="homeh2">Zelf een project insturen</h2>
+            <form>
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname">
+            </form>
+        </section>
+    </main>
+
+    <%- include('./partials/foot') %>

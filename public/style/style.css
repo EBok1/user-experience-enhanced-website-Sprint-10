@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body{
+    --lightblue: rgb(228, 242, 238); 
+    --darkgrey: rgb(51, 51, 51);
+}
+
+/* navigatie */
+nav {
+    background-color: var(--lightblue);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: solid var(--darkgrey);
+    border-top: solid var(--darkgrey) .1em;
+}
+
+ul {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+li {
+    display: flex;
+    list-style: none;
+    padding: 1em;
+}
+
+li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+}
+
+.liNav:hover {
+    border: solid rgb(51, 51, 51);
+    border-radius: 20px;
+}
+
+
+/* home pagina */
+.homePage {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(228, 242, 238);
+}
+
+.homeImg {
+    width: 100%;
+    height: 70%;
+    object-fit: contain;
+    background-color: rgb(228, 242, 238);
+}
+
+.homeBtnScroll {
+    display: flex;
+    margin: 0 auto;
+    padding: .5em;
+    border: solid rgb(51, 51, 51);
+    border-radius: 20px;
+    background-color: white;
+}
+
+.homeBtnScroll:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all .3s ease-in-out;
+    box-shadow: 4px 4px 4px 2px #bababa;
+}
+
+.homeH {
+    padding-left: 1em;
+    padding-top: 2.2em;
+    color: rgb(51, 51, 51);
+    font-size: 2em;
+    text-align: center;
+    background-color: rgb(228, 242, 238);
+}
+
+.homeh2 {
+    margin: 2em 0 0 2em;
+}
+
+.card {
+    margin: 1em 1em 2em 1.5em;
+    color: rgb(51, 51, 51);
+    max-width: 20em;
+    max-height: 40em;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardContainer {
+    display: flex;
+    overflow: scroll;
+    margin-top: 1em;
+    margin-right: 1em;
+}
+
+.hometext {
+    padding: 1em 5em 1em 5em;
+    color: rgb(51, 51, 51);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: rgb(228, 242, 238);
+}
+
+form {
+    margin: 1em 2em 2em 2em;
+    border: solid rgb(228, 242, 238);
+    border-width: .3em;
+    padding: 1em;
+}
+
+
+/* vraag-aanbod */
+.VAh1 {
+    margin: 2.5em 0 0 1em;
+}
+
+.project {
+    margin: 1em 2em 0 2em;
+    border: solid rgb(228, 242, 238);
+    border-width: .2em;
+    padding: .5em;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1em;
+}
+
+.card {
+    border: solid peachpuff;
+    border-radius: 50px;
+    border-width: .5em;
+}
+
+.linkVA {
+    list-style: none;
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+}
+
+.imgVA {
+    border-radius: 50px;
+    height: 15em;
+    width: 15em;
+    object-fit: cover;
+    margin: 1em;
+}
+
+.description {
+    margin: 1em;
+
+}
+
+.btn {
+    margin: 1em;
+}
+
+/* detail */
+.imgDetail {
+    width: 20em;
+}
+
+/* about us */
+.aboutH {
+    margin: 2em;
+}
+
+/* footer */
+footer {
+    display: flex;
+    background-color: rgb(228, 242, 238);
+    width: 100%;
+    height: 6em;
+    padding: 2.5em;
+    text-align: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+p {
+    margin-left: 1em;
+}
+
+i {
+    font-size: 1.5em;
+}
+
+/* project-insturen */
+.insturenH1 {
+    margin: 2.5em 0 0 1em;
+}
+
+.projectenArticle {
+    display: flex;
+    margin-left: 2.2em;
+    text-align: left;
+    text-align-last: left;
+}
+
+.insturenH2 {
+    margin: 2em 0 0 1.4em;
+}
+
+.linkvraag-aanbod {
+    display: flex;
+    margin: 2em 5em 5em 5em;
+    justify-content: center;
+}
+
+.vraagbtn {
+    margin: 1.5em;
+    padding: 5em;
+    background-color: rgb(228, 242, 238);
+    border: solid rgb(51, 51, 51);
+    border-width: .3em;
+    border-radius: 20px;
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+}
+
+.aanbodbtn {
+    margin: 1.5em;
+    padding: 5em;
+    background-color: rgb(228, 242, 238);
+    border: solid rgb(51, 51, 51);
+    border-width: .3em;
+    border-radius: 20px;
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+}
+
+/* vraag.ejs */
+.formVraag {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 5em;
+}
+
+.catagorieLijst {
+    display: flex;
+    flex-wrap: wrap;
+}

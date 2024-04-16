@@ -1,0 +1,24 @@
+<%- include('./partials/head' , {current: '/detail' }) %>
+
+    <main>
+        <section>
+            <h1>
+                <%= service.title %>
+            </h1>
+
+            <% if (service.image) { %>
+                <img class="imgDetail" src="https://fdnd-agency.directus.app/assets/<%= service.image %>">
+                <% } %>
+
+                    <p>
+                        <span>
+                            <%= service.start_date %> - <%= service.end_date %>
+                        </span>
+                    </p>
+
+                    <p><%- service.long_description %></p>
+                    </div>
+        </section>
+    </main>
+
+    <%- include('./partials/foot') %>

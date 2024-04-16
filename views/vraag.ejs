@@ -1,0 +1,65 @@
+<%- include('./partials/head' , {current: '/' }) %>
+
+    <main>
+        <form action="/submit-form-vraag" method="post" class="formVraag">
+            <li>
+                <label for="name">Volledige naam:</label>
+                <input type="text" id="name" name="naam" placeholder="Vul naam in">
+            </li>
+            <li>
+                <label for="e-mail">E-mail:</label>
+                <input type="email" id="e-mail" name="email" placeholder="e-mail@example.com">
+            </li>
+            <li>
+                <label for="nummer">Telefoonnummer:</label>
+                <input type="tel" id="nummer" name="nummer" placeholder="Telefoonnummer">
+            </li>
+            <li>
+                <label for="titel">Titel van project:</label>
+                <input type="text" id="titel" name="titel" placeholder="Titel">
+            </li>
+            <li>
+                <label for="buurt">Buurt:</label>
+                <input type="text" id="buurt" name="buurt">
+            </li>
+            <li>
+                <label for="bericht">Beschrijving:</label>
+                <textarea name="beschrijving" id="bericht" cols="70" rows="6"
+                    placeholder="Omschrijf het project"></textarea>
+            </li>
+            <li class="catagorieLijst">
+                <label for="catagorie">Catagorieën:</label>
+                <input type="checkbox" id="catagorie" name="catagorie" value="kunt en cultuur">Kunst en Cultuur
+                <input type="checkbox" id="catagorie" name="catagorie" value="sociale activiteiten">Sociale Activiteiten
+                <input type="checkbox" id="catagorie" name="catagorie" value="sport en recreatie">Sport en Recreatie
+                <input type="checkbox" id="catagorie" name="catagorie" value="educatie">Educatie
+                <input type="checkbox" id="catagorie" name="catagorie" value="gezondheid en welzijn">Gezondheid en
+                Welzijn
+                <input type="checkbox" id="catagorie" name="catagorie" value="feesten en evenementen">Feesten en
+                Evenementen
+                <input type="checkbox" id="catagorie" name="catagorie" value="natuurbehoud">Natuurbehoud
+                <input type="checkbox" id="catagorie" name="catagorie" value="buurtverfraaiing">Buurtverfraaiing
+                <input type="checkbox" id="catagorie" name="catagorie"
+                    value="gemeenschapsontwikkeling">Gemeenschapsontwikkeling
+            </li>
+            <li>
+                <label for="document">Upload foto:</label>
+                <input type="file" id="document" name="document" placeholder="Voeg document toe">
+            </li>
+            <li>
+                <label for="locatie">Locatie:</label>
+                <input type="text" id="locatie" name="locatie" placeholder="Vul locatie in">
+            </li>
+            <li>
+                <label for="tijd">Tijd:</label>
+                <input type="time" id="tijd" name="tijd" placeholder="Vul tijd in">
+            </li>
+            <li>
+                <label for="date">Datum:</label>
+                <input type="date" id="date" name="datum" placeholder="Vul datum in">
+            </li>
+            <input class="button is-primary" type="submit" value="Submit">
+        </form>
+    </main>
+
+    <%- include('./partials/foot') %>
