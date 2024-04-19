@@ -43,24 +43,6 @@ app.get('/vraag-aanbod/:projectId', function (request, response) {
     })
 })
 
-app.get('/contact', function (request, response) {
-    fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
-        response.render('contact', { services: servicesDataUitDeAPI.data })
-    });
-})
-
-app.get('/about', function (request, response) {
-    fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
-        response.render('about', { services: servicesDataUitDeAPI.data })
-    });
-})
-
-app.get('/faq', function (request, response) {
-    fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
-        response.render('faq', { services: servicesDataUitDeAPI.data })
-    });
-})
-
 
 
 app.get('/project-insturen', function (request, response) {
@@ -72,12 +54,6 @@ app.get('/project-insturen', function (request, response) {
 app.get('/vraag', function (request, response) {
     fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
         response.render('vraag', { services: servicesDataUitDeAPI.data })
-    });
-})
-
-app.get('/aanbod', function (request, response) {
-    fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
-        response.render('aanbod', { services: servicesDataUitDeAPI.data })
     });
 })
 
@@ -102,6 +78,35 @@ app.post('/submit-form-vraag', (request, response) => {
     response.redirect(303, '/vraag-aanbod')
     console.log(projecten);
 })
+
+app.get('/aanbod', function (request, response) {
+    fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
+        response.render('aanbod', { services: servicesDataUitDeAPI.data })
+    });
+})
+
+
+
+app.get('/about', function (request, response) {
+    fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
+        response.render('about', { services: servicesDataUitDeAPI.data })
+    });
+})
+
+app.get('/contact', function (request, response) {
+    fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
+        response.render('contact', { services: servicesDataUitDeAPI.data })
+    });
+})
+
+app.get('/faq', function (request, response) {
+    fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
+        response.render('faq', { services: servicesDataUitDeAPI.data })
+    });
+})
+
+
+
 
 
 
