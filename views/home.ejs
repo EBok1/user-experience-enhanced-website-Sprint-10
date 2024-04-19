@@ -20,6 +20,9 @@
                     <% if (service.type=='vraag' ) { %>
 
                         <article class="card">
+                            <span>
+                                <%= board.likes %>
+                            </span> <span>likes</span>
                             <a class="linkVA" href="/vraag-aanbod/<%= service.id %>">
                                 <% if (service.image) { %>
                                     <img class="imgVA" alt="afbeelding van project"

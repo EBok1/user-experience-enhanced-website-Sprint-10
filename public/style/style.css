@@ -5,8 +5,8 @@
     font-family: "Open Sans", sans-serif;
 }
 
-body{
-    --lightblue: rgb(228, 242, 238); 
+body {
+    --lightblue: rgb(228, 242, 238);
     --darkgrey: rgb(51, 51, 51);
 }
 
@@ -24,6 +24,7 @@ ul {
     display: flex;
     text-align: center;
     justify-content: center;
+    margin: .1em;
 }
 
 li {
