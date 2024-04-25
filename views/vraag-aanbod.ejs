@@ -14,16 +14,16 @@
         </div>
         <% projecten.forEach(function(project) { %>
             <article class="card">
-                <form class="like" action="/board/<%= board.id %>" method="post">
-                    <input type="hidden" name="actie" value="like" />
-                    <button type="submit"><span class="likes">
-                            <%= board.likes %>
-                        </span> <span>likes</span></button>
-                </form>
+
+
+                <span>
+                    <%= service.likes %>
+                </span> <span>likes</span>
+
                 <a class="linkVA" href="/vraag-aanbod/<%= project.id %>">
                     <% if (project.image) { %>
                         <img class="imgVA" alt="afbeelding van project"
-                            src="https://fdnd-agency.directus.app/assets/<%= project.image %>">
+                            src="https://fdn.Ld-agency.directus.app/assets/<%= project.image %>">
                         <% } %>
                             <div class="description">
                                 <h3>
@@ -50,8 +50,16 @@
                             <article class="card">
                                 <a class="linkVA" href="/vraag-aanbod/<%= service.id %>">
                                     <% if (service.image) { %>
-                                        <img class="imgVA" alt="afbeelding van project"
-                                            src="https://fdnd-agency.directus.app/assets/<%= service.image %>">
+                                        <picture>
+                                            <source
+                                                srcset="https://fdnd-agency.directus.app/assets/<%= service.image %>?format=avif"
+                                                type="image/avif" />
+                                            <source
+                                                srcset="https://fdnd-agency.directus.app/assets/<%= service.image %>?format=webp"
+                                                type="image/webp" />
+                                            <img class="imgVA" alt="afbeelding van project" height="200px" width="150"
+                                                src="https://fdnd-agency.directus.app/assets/<%= service.image %>">
+                                        </picture>
                                         <% } %>
 
                                             <div class="description">
@@ -74,7 +82,7 @@
                                 <% }) %>
 
                                     <% services.forEach(function(service) { %>
-                                        <!-- Laat alleen de service zien als het type een vraag is -->
+                                        <!-- Laat alleen de service zien als het type een aanbod is -->
                                         <% if (service.type=='aanbod' ) { %>
 
                                             <article class="card">

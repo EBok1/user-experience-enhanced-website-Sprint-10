@@ -22,14 +22,23 @@ app.use(express.urlencoded({ extended: true }))
 
 // TODO: routes voor deze hallen applicatie..
 const apiUrl = 'https://fdnd-agency.directus.app/items/dh_services'
-
+const baseUrl = 'https://fdnd-agency.directus.app/'
+const likes = []
 const projecten = []
 
 app.get('/', function (request, response) {
     fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
-        response.render('home', { services: servicesDataUitDeAPI.data })
+        response.render('home', {
+            services: servicesDataUitDeAPI.data,
+            likes: likes
+        })
     });
 })
+app.post('/', function (request, response) {
+    likes.push(request.body.like)
+    response.redirect(303, '/')
+})
+
 
 app.get('/vraag-aanbod', function (request, response) {
     fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
@@ -42,8 +51,26 @@ app.get('/vraag-aanbod/:projectId', function (request, response) {
         response.render('detail', { service: serviceDetail.data[0] })
     })
 })
+app.post('/vraag-aanbod/:projectId', function (request, response) {
+    console.log('POST met projectId: ' + request.params.projectId);
 
-
+    fetchJson(`${baseUrl}items/dh_services/${request.params.projectId}`).then(({ data }) => {
+        // Stap 2: Sla de nieuwe data op in de API
+        // Voeg de nieuwe lijst messages toe in de WHOIS API, via een PATCH request
+        fetch(`${baseUrl}items/dh_services/${request.params.projectId}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                likes: data.likes + 1,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then((patchResponse) => {
+            // Redirect naar de persoon pagina
+            response.redirect(303, '/vraag-aanbod/' + request.params.projectId)
+        })
+    })
+})
 
 app.get('/project-insturen', function (request, response) {
     fetchJson(apiUrl).then((servicesDataUitDeAPI) => {
@@ -112,49 +139,15 @@ app.get('/faq', function (request, response) {
 
 
 
-// Maak een GET route voor de index
-app.get('/', function (request, response) {
-    // Haal alle personen uit de WHOIS API op
-    fetchJson(`${baseUrl}items/got99boards/?fields=id,name,likes,picture.filename_disk`).then(({ data }) => {
-        // Pas de url naar de afbeelding aan zodat die verwijst naar directus
-        data = data.map((board) => {
-            board.picture = `${baseUrl}assets/${board.picture.filename_disk}`
-            return board
-        })
-
-        // Render index.ejs uit de views map en geef de opgehaalde data mee
-        response.render('index', {
-            boards: data,
-        })
-    })
-})
-
-// Maak een GET route voor een detailpagina met een request parameter id
-app.get('/board/:id', function (request, response) {
-    // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
-    fetchJson(`${baseUrl}items/got99boards/${request.params.id}?fields=*,picture.filename_disk`).then(({ data }) => {
-        // Pas de url naar de afbeelding aan zodat die verwijst naar directus
-        data.picture = `${baseUrl}assets/${data.picture.filename_disk}`
-        data.length = Number(data.length).toFixed(2)
-        data.width = Number(data.width).toFixed(2)
-        data.wheelbase = Number(data.wheelbase).toFixed(2)
-
-        // Render detail.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-        response.render('board', {
-            board: data,
-        })
-    })
-})
-
 // Als we vanuit de browser een POST doen op de detailpagina van een persoon
-app.post('/board/:id', function (request, response) {
+app.post('/detail/:id', function (request, response) {
     // Stap 1: Haal de huidige data op, zodat we altijd up-to-date zijn, en niks weggooien van anderen
 
     // Haal eerst de huidige gegevens voor dit board op, uit de WHOIS API
-    fetchJson(`${baseUrl}items/got99boards/${request.params.id}`).then(({ data }) => {
+    fetchJson(`${baseUrl}items/dh_services/${request.params.id}`).then(({ data }) => {
         // Stap 2: Sla de nieuwe data op in de API
         // Voeg de nieuwe lijst messages toe in de WHOIS API, via een PATCH request
-        fetch(`${baseUrl}items/got99boards/${request.params.id}`, {
+        fetch(`${baseUrl}items/dh_services/${request.params.id}`, {
             method: 'PATCH',
             body: JSON.stringify({
                 likes: data.likes + 1,
@@ -164,10 +157,11 @@ app.post('/board/:id', function (request, response) {
             },
         }).then((patchResponse) => {
             // Redirect naar de persoon pagina
-            response.redirect(303, '/board/' + request.params.id)
+            response.redirect(303, '/detail/' + request.params.id)
         })
     })
 })
+
 
 
 

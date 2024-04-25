@@ -6,6 +6,13 @@
                 <%= service.title %>
             </h1>
 
+            <form class="like" action="/vraag-aanbod/<%= service.id %>" method="post">
+                <input type="hidden" name="actie" value="like" />
+                <button type="submit"><span class="likes">
+                        <%= service.likes %>
+                    </span> <span>likes</span></button>
+            </form>
+
             <% if (service.image) { %>
                 <img class="imgDetail" src="https://fdnd-agency.directus.app/assets/<%= service.image %>">
                 <% } %>
