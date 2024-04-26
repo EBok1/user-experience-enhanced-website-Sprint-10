@@ -51,12 +51,18 @@ app.get('/vraag-aanbod/:projectId', function (request, response) {
         response.render('detail', { service: serviceDetail.data[0] })
     })
 })
+
+// Dit definieert een POST-verzoekshandler voor de route '/vraag-aanbod/:projectId'. 
+// Dit betekent dat deze handler wordt geactiveerd wanneer er een POST-verzoek naar deze specifieke route wordt gestuurd.
 app.post('/vraag-aanbod/:projectId', function (request, response) {
     console.log('POST met projectId: ' + request.params.projectId);
 
+    // fetch verzoek naar een externe API, om gegevens op te halen uit een bepaalde url 
+    // projectID wordt gebruikt in de URL. Zodra de gegevens zijn opgehaald, wordt een functie uitgevoerd om de gegevens te werken.
     fetchJson(`${baseUrl}items/dh_services/${request.params.projectId}`).then(({ data }) => {
-        // Stap 2: Sla de nieuwe data op in de API
-        // Voeg de nieuwe lijst messages toe in de WHOIS API, via een PATCH request
+
+        // patch verzoek, gegevens wordenbijgewerkt op basis van het ontvangen projectid
+        // het verzoek bevat JSON-gegevens met de bij te werken informatie, in dit geval wordt het aantal likes met één verhoogd.
         fetch(`${baseUrl}items/dh_services/${request.params.projectId}`, {
             method: 'PATCH',
             body: JSON.stringify({
