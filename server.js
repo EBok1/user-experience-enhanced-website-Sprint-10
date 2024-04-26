@@ -136,37 +136,6 @@ app.get('/faq', function (request, response) {
 
 
 
-
-
-
-// Als we vanuit de browser een POST doen op de detailpagina van een persoon
-app.post('/detail/:id', function (request, response) {
-    // Stap 1: Haal de huidige data op, zodat we altijd up-to-date zijn, en niks weggooien van anderen
-
-    // Haal eerst de huidige gegevens voor dit board op, uit de WHOIS API
-    fetchJson(`${baseUrl}items/dh_services/${request.params.id}`).then(({ data }) => {
-        // Stap 2: Sla de nieuwe data op in de API
-        // Voeg de nieuwe lijst messages toe in de WHOIS API, via een PATCH request
-        fetch(`${baseUrl}items/dh_services/${request.params.id}`, {
-            method: 'PATCH',
-            body: JSON.stringify({
-                likes: data.likes + 1,
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        }).then((patchResponse) => {
-            // Redirect naar de persoon pagina
-            response.redirect(303, '/detail/' + request.params.id)
-        })
-    })
-})
-
-
-
-
-
-
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
 

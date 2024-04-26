@@ -22,8 +22,14 @@
 
                 <a class="linkVA" href="/vraag-aanbod/<%= project.id %>">
                     <% if (project.image) { %>
-                        <img class="imgVA" alt="afbeelding van project"
-                            src="https://fdn.Ld-agency.directus.app/assets/<%= project.image %>">
+                        <picture>
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= project.image %>?format=avif"
+                                type="image/avif" />
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= project.image %>?format=webp"
+                                type="image/webp" />
+                            <img class="imgVA" alt="afbeelding van project" height="240px" width="240px" loading="lazy"
+                                src="https://fdn.Ld-agency.directus.app/assets/<%= project.image %>">
+                        </picture>
                         <% } %>
                             <div class="description">
                                 <h3>
@@ -57,7 +63,8 @@
                                             <source
                                                 srcset="https://fdnd-agency.directus.app/assets/<%= service.image %>?format=webp"
                                                 type="image/webp" />
-                                            <img class="imgVA" alt="afbeelding van project" height="200px" width="150"
+                                            <img class="imgVA" alt="afbeelding van project" height="240px" width="240px"
+                                                loading="lazy"
                                                 src="https://fdnd-agency.directus.app/assets/<%= service.image %>">
                                         </picture>
                                         <% } %>
@@ -88,8 +95,17 @@
                                             <article class="card">
                                                 <a class="linkVA" href="/vraag-aanbod/<%= service.id %>">
                                                     <% if (service.image) { %>
-                                                        <img class="imgVA" alt="afbeelding van project"
-                                                            src="https://fdnd-agency.directus.app/assets/<%= service.image %>">
+                                                        <picture>
+                                                            <source
+                                                                srcset="https://fdnd-agency.directus.app/assets/<%= service.image %>?format=avif"
+                                                                type="image/avif" />
+                                                            <source
+                                                                srcset="https://fdnd-agency.directus.app/assets/<%= service.image %>?format=webp"
+                                                                type="image/webp" />
+                                                            <img class="imgVA" alt="afbeelding van project"
+                                                                height="240px" width="240px" loading="lazy"
+                                                                src="https://fdnd-agency.directus.app/assets/<%= service.image %>">
+                                                        </picture>
                                                         <% } %>
 
                                                             <div class="description">
@@ -105,7 +121,7 @@
 
                                                                 <p><%- service.short_description %></p>
                                                             </div>
-                                                </a> <br>
+                                                </a>
                                                 <button class="btn">Meer informatie</button>
                                             </article>
 
