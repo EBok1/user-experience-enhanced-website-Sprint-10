@@ -92,12 +92,13 @@ li a {
 .card {
     margin: 1em 1em 2em 1.5em;
     color: rgb(51, 51, 51);
-    max-width: 20em;
-    max-height: 40em;
     text-align: center;
-    justify-content: center;
     display: flex;
     flex-direction: column;
+}
+
+.shortDescription {
+    text-align: left;
 }
 
 .cardContainer {
@@ -180,23 +181,20 @@ form {
 
 /* footer */
 footer {
-    display: flex;
+    display: grid;
     background-color: rgb(228, 242, 238);
     width: 100%;
-    height: 6em;
-    padding: 2.5em;
-    text-align: center;
-    justify-content: center;
-    margin-top: 2em;
+    padding: 2em 0 2em 0;
 }
 
-p {
-    margin-left: 1em;
+.container2 {
+    margin: 0 auto;
 }
 
 i {
     font-size: 1.5em;
 }
+
 
 /* project-insturen */
 .insturenH1 {
@@ -276,6 +274,22 @@ i {
     /* Ruimte tussen alinea's */
 }
 
+.Voorgaande {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.projectImage {
+    margin: .5em;
+}
+
+.projectsH3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3em 0 1em 0;
+}
 
 
 /* contact pagina */
